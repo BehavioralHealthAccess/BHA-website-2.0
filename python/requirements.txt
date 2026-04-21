@@ -1,0 +1,8 @@
+# Data cleaning: notebooks/samhsa_cleaning_pipeline.ipynb
+# Create env:  cd python && python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+pandas>=2.0
+numpy>=1.24
+
+# Jupyter / VS Code notebook kernel (optional)
+jupyter>=1.0
+ipykernel>=6.0

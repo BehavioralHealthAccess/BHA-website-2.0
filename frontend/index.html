@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="New Jersey Behavioral Health Access Navigator — a plausibility engine for finding behavioral health facilities using public data."/>
+  <title>NJ Behavioral Health Access Navigator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://images.unsplash.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/site.css"/>
+</head>
+<body class="site-body">
+  <header class="site-nav" role="navigation" aria-label="Primary">
+    <a class="site-brand" href="index.html">
+      <span class="site-logo" aria-hidden="true">BHA</span>
+      <span>NJ Access Navigator</span>
+    </a>
+    <ul class="site-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#data">Data</a></li>
+      <li><a href="#startup">Opportunity</a></li>
+      <li><a class="site-cta" href="navigator.html">Facility Navigator</a></li>
+    </ul>
+    <span class="site-crisis">Crisis? <strong>988</strong> · Emergency <strong>911</strong></span>
+  </header>
+
+  <main class="site-scroll" id="main">
+    <!-- Hero -->
+    <section id="home" class="site-section site-section--hero site-section--wash is-visible">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-grid site-inner site-inner--hero">
+        <div class="hero-copy">
+          <p class="hero-kicker">Public data · Honest fit · Mid-Atlantic focus</p>
+          <h1 class="hero-title">New Jersey Behavioral Health Access Navigator</h1>
+          <p class="hero-lead">
+            A prototype that helps care teams move from <em>guessing who to call</em> to <strong>ranked, explainable options</strong>—grounded in SAMHSA facility data and built to grow with NPPES, HRSA, and payer sources.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="navigator.html">Open the Facility Navigator →</a>
+            <a class="btn-ghost" href="#solution">See the approach</a>
+          </div>
+          <div class="hero-trust">
+            <span class="hero-trust-item">SAMHSA-backed facility records</span>
+            <span class="hero-trust-item">No booking claims—fit &amp; plausibility</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <figure class="hero-figure">
+            <img
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&amp;fit=crop&amp;w=900&amp;h=1100&amp;q=80"
+              width="450"
+              height="550"
+              alt="Care team reviewing health information together"
+              loading="eager"
+              class="hero-photo"
+            />
+            <figcaption class="hero-caption">Built for navigators, discharge planners &amp; coordinators—not as a substitute for clinical judgment.</figcaption>
+          </figure>
+          <div class="hero-float hero-float--a" aria-hidden="true">
+            <span class="hero-float-num">1,039</span>
+            <span class="hero-float-lbl">facilities in dataset</span>
+          </div>
+          <div class="hero-float hero-float--b" aria-hidden="true">
+            <span class="hero-float-icon">⌖</span>
+            <span class="hero-float-lbl">ZIP + radius + fit scores</span>
+          </div>
+        </div>
+      </div>
+      <div class="stats-strip site-inner">
+        <div class="stat-card">
+          <span class="stat-val" data-count="1039">1,039</span>
+          <span class="stat-label">SAMHSA facilities indexed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-val">621</span>
+          <span class="stat-label">ZIPs with coordinates (map)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-val">4</span>
+          <span class="stat-label">States (NJ · NY · PA · DE)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-val">∞</span>
+          <span class="stat-label">Roadmap: NPPES + HRSA + payers</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section id="problem" class="site-section site-section--split">
+      <div class="split-visual reveal-group">
+        <img
+          src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;w=800&amp;h=1000&amp;q=80"
+          width="400"
+          height="500"
+          alt="Professional on phone at desk—symbolizing directory chase and follow-up"
+          loading="lazy"
+          class="split-img"
+        />
+        <div class="split-blob" aria-hidden="true"></div>
+      </div>
+      <div class="split-text">
+        <p class="section-label">The gap</p>
+        <h2 class="section-title">Directories fail the people who need them most</h2>
+        <div class="prose">
+          <p>
+            Ask any social worker, discharge planner, or care coordinator in NJ how they find a mental health bed or program: <strong>call a list that is half wrong</strong>, wait on hold, leave voicemails, repeat. Payer directories go stale; PDFs contradict APIs; nobody certifies which options are <em>plausible</em> for a given ZIP, insurance, and level of care.
+          </p>
+          <p>
+            That friction is not just annoying—it is a <strong>market failure</strong>. Teams need tools that respect what public data can prove, label uncertainty honestly, and cut the search space fast.
+          </p>
+        </div>
+        <ul class="pain-list">
+          <li><span class="pain-ic" aria-hidden="true">📋</span> Stale or conflicting provider lists</li>
+          <li><span class="pain-ic" aria-hidden="true">⏱</span> Hours lost to cold calls &amp; dead ends</li>
+          <li><span class="pain-ic" aria-hidden="true">🧩</span> No single “confidence” view across sources</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section id="solution" class="site-section site-section--wash site-section--mesh">
+      <div class="site-inner">
+        <p class="section-label">What we build</p>
+        <h2 class="section-title">A plausibility navigator—not a booking app</h2>
+        <p class="prose prose--intro">
+          The data cannot schedule appointments. It <em>can</em> rank options you should try first: match filters, distance, and service fields; show <strong>explainable scores</strong> and short reasons; and (optionally) use AI to re-rank a short list from natural language—always on top of transparent rules.
+        </p>
+        <div class="bento">
+          <article class="bento-card bento-card--wide">
+            <div class="bento-ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 21s7-4.5 7-11a7 7 0 10-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>ZIP &amp; radius first</h3>
+            <p>Anchor search on patient location, then filter by care type, setting, insurance, populations, and emergency services—same mental model coordinators already use.</p>
+          </article>
+          <article class="bento-card">
+            <div class="bento-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+            <h3>Explainable match scores</h3>
+            <p>Rule-based scoring from published facility fields—no black box for the default path.</p>
+          </article>
+          <article class="bento-card">
+            <div class="bento-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+            <h3>Optional AI re-rank</h3>
+            <p>Ask in plain English; the server sends a constrained prompt to Gemini to reorder a small pool—rules still visible underneath.</p>
+          </article>
+          <article class="bento-card bento-card--accent">
+            <div class="bento-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <h3>Map + detail pane</h3>
+            <p>Scan geography quickly, then open phone, intake line, and structured service fields in one place.</p>
+          </article>
+        </div>
+        <div class="pill-row">
+          <span class="pill">Rule-first ranking</span>
+          <span class="pill">Hybrid AI option</span>
+          <span class="pill">SAMHSA 2024 extract</span>
+          <span class="pill">Built for NJ &amp; neighbors</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="site-section site-section--quote" aria-labelledby="quote-heading">
+      <div class="quote-inner site-inner">
+        <p id="quote-heading" class="visually-hidden">Why navigation matters</p>
+        <blockquote class="quote-block">
+          <p>“If we could spend less time <span class="quote-em">proving a number isn’t disconnected</span> and more time on warm handoffs, patients would get into care days faster.”</p>
+          <footer>— Typical workflow pain, behavioral health navigation (illustrative)</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="site-section">
+      <div class="site-inner">
+        <p class="section-label">Workflow</p>
+        <h2 class="section-title">How it works in practice</h2>
+        <ol class="steps">
+          <li class="steps-item">
+            <span class="steps-num">1</span>
+            <div class="steps-body">
+              <h3>Enter location &amp; constraints</h3>
+              <p>ZIP and radius set the geographic pool; filters narrow by level of care, insurance, populations, and crisis services.</p>
+            </div>
+          </li>
+          <li class="steps-item">
+            <span class="steps-num">2</span>
+            <div class="steps-body">
+              <h3>Review ranked results</h3>
+              <p>Facilities sort by match score and distance with short “why this row” explanations from field-level alignment.</p>
+            </div>
+          </li>
+          <li class="steps-item">
+            <span class="steps-num">3</span>
+            <div class="steps-body">
+              <h3>Optional: Ask AI in natural language</h3>
+              <p>Describe the case in prose; AI re-ranks a capped list from your current filter results—useful for messy, multi-criteria queries.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Data -->
+    <section id="data" class="site-section site-section--wash site-section--mesh">
+      <div class="site-inner site-inner--wide">
+        <p class="section-label">Roadmap</p>
+        <h2 class="section-title">Public data we fuse over time</h2>
+        <p class="prose prose--intro">
+          Today’s prototype centers on <strong>SAMHSA</strong> facility attributes. Next layers add corroboration and shortage context—without pretending any feed replaces verification with the facility.
+        </p>
+        <div class="data-grid">
+          <article class="data-card">
+            <div class="data-card-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <h3>NPPES</h3>
+            <p>National Plan &amp; Provider Enumeration System—provider identities, specialties, and practice addresses (large CMS file, monthly).</p>
+          </article>
+          <article class="data-card data-card--featured">
+            <div class="data-card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <h3>SAMHSA <span class="data-badge">Live</span></h3>
+            <p>Behavioral health treatment facility listings—core of the current navigator: services, settings, payor fields, and more.</p>
+          </article>
+          <article class="data-card">
+            <div class="data-card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <h3>HRSA</h3>
+            <p>Mental health professional shortage areas—county-level pressure useful for triage storytelling and policy overlays.</p>
+          </article>
+          <article class="data-card">
+            <div class="data-card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4M2 11h20"/></svg></div>
+            <h3>Payer directory APIs</h3>
+            <p>CMS transparency rules push machine-readable directories—future layer to cross-check “in network” claims responsibly.</p>
+          </article>
+          <article class="data-card">
+            <div class="data-card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <h3>CMS quality</h3>
+            <p>Where available, inpatient psychiatric quality measures complement directory truth—not universal, but high signal.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Startup -->
+    <section id="startup" class="site-section site-section--dark site-section--dark-visual">
+      <div class="dark-orbs" aria-hidden="true"></div>
+      <div class="site-inner">
+        <p class="section-label">Why now</p>
+        <h2 class="section-title">Startup trajectory, not just a research exercise</h2>
+        <div class="prose">
+          <p>
+            The goal is a <strong>working prototype we can pitch for funding</strong>—Rutgers I-Corps and entrepreneurship support, New Jersey SBIR matching, and programs like the Foundation for Health Advancement (up to <strong>$75,000</strong> for eligible Rutgers-affiliated health innovation). A research paper may follow; the north star is something navigators can demo and funders can diligence.
+          </p>
+        </div>
+        <ul class="split-list">
+          <li>Rutgers I-Corps &amp; venture pathways</li>
+          <li>New Jersey SBIR / STTR matching landscape</li>
+          <li>Foundation for Health Advancement (up to $75k for qualified projects)</li>
+        </ul>
+        <div class="hero-actions startup-cta">
+          <a class="btn-primary" href="navigator.html">Try the Facility Navigator →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prototype -->
+    <section class="site-section site-section--tight site-section--prototype site-section--wash">
+      <div class="site-inner site-inner--wide proto-grid">
+        <div class="proto-copy">
+          <p class="section-label">Prototype</p>
+          <h2 class="section-title">See the live tool</h2>
+          <p class="prose">
+            Open the <strong>Facility Navigator</strong> for interactive search: filters, map, ranked list, detail pane, and optional <strong>Ask AI</strong> (Gemini via your server key). Always validate availability and network status with the facility.
+          </p>
+          <a class="btn-primary" href="navigator.html">Launch navigator →</a>
+        </div>
+        <div class="proto-mock" aria-hidden="true">
+          <div class="proto-browser">
+            <div class="proto-dots"><span></span><span></span><span></span></div>
+            <div class="proto-bar">navigator.html · Facility search</div>
+            <div class="proto-frame">
+              <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&amp;fit=crop&amp;w=800&amp;h=520&amp;q=80" alt="" width="400" height="260" loading="lazy"/>
+              <div class="proto-overlay">
+                <span class="proto-chip">Map + list</span>
+                <span class="proto-chip">Match scores</span>
+                <span class="proto-chip">Ask AI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>NJ Behavioral Health Access Navigator · Educational / startup prototype · Not a substitute for clinical or crisis care.</p>
+    <p class="footer-sub">Photos via <a href="https://unsplash.com" rel="noopener noreferrer" target="_blank">Unsplash</a> (stock imagery for illustration).</p>
+    <p class="footer-links"><a href="navigator.html">Facility Navigator</a> · <a href="#home">Back to top</a></p>
+  </footer>
+
+  <script src="js/site.js" defer></script>
+</body>
+</html>

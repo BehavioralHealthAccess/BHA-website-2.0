@@ -1,0 +1,11 @@
+# Secrets (Gemini key for backend proxy)
+.env
+
+# Python tooling (see python/README.md)
+python/.venv/
+
+# Legacy: venv at repo root (optional)
+.venv/
+
+__pycache__/
+.ipynb_checkpoints/

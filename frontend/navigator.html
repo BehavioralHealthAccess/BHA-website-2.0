@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="nav-tool">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Facility Navigator — NJ Behavioral Health Access</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body class="nav-tool">
+<header class="app-header">
+  <div class="app-header__main">
+    <a href="index.html" class="app-header__brand" title="Back to project home">NJ Behavioral Health Access</a>
+    <span class="app-header__sep" aria-hidden="true">/</span>
+    <span class="app-header__tool">Facility search</span>
+  </div>
+  <div class="app-header__meta">
+    <span class="app-header__dataset">SAMHSA + clusters · 8,319 facilities · Nationwide</span>
+    <span class="app-header__crisis">Crisis <strong>988</strong> · Emergency <strong>911</strong></span>
+  </div>
+</header>
+
+<div class="app">
+  <!-- Filters: single dense toolbar (common pattern for map/directory tools) -->
+  <section class="filter-toolbar" aria-label="Search filters">
+    <div class="filter-toolbar__fields">
+      <div class="fg zip"><span class="fl">ZIP</span><input type="text" id="fZip" placeholder="08608" maxlength="5" autocomplete="postal-code"/></div>
+      <div class="fg rad"><span class="fl">Radius</span>
+        <select id="fRad">
+          <option value="">Any</option>
+          <option value="10">≤ 10 mi</option>
+          <option value="25" selected>≤ 25 mi</option>
+          <option value="50">≤ 50 mi</option>
+          <option value="100">≤ 100 mi</option>
+        </select>
+      </div>
+      <div class="fg st"><span class="fl">State</span>
+        <select id="fState">
+          <option value="">All</option>
+        </select>
+      </div>
+      <div class="fg cpx"><span class="fl">Complexity</span>
+        <select id="fComplexity" aria-describedby="complexityHelp">
+          <option value="">Any</option>
+          <option value="high">High</option>
+          <option value="moderate">Moderate</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+      <div class="fg tier"><span class="fl">Tier</span>
+        <select id="fTier">
+          <option value="">Any</option>
+        </select>
+      </div>
+      <div class="fg care"><span class="fl">Care</span>
+        <select id="fCare">
+          <option value="">Any</option>
+          <option value="mental health">Mental health</option>
+          <option value="substance use">Substance use</option>
+          <option value="co-occurring">Co-occurring</option>
+        </select>
+      </div>
+      <div class="fg sett"><span class="fl">Setting</span>
+        <select id="fSett">
+          <option value="">Any</option>
+          <option value="Hospital inpatient">Inpatient</option>
+          <option value="Outpatient">Outpatient</option>
+          <option value="Residential">Residential</option>
+          <option value="Partial hospitalization">PHP / day</option>
+        </select>
+      </div>
+      <div class="fg ins"><span class="fl">Insurance</span>
+        <select id="fIns">
+          <option value="">Any</option>
+          <option value="medicaid">Medicaid</option>
+          <option value="medicare">Medicare</option>
+          <option value="private health insurance">Private</option>
+          <option value="cash or self-payment">Self-pay</option>
+          <option value="sliding">Sliding scale</option>
+        </select>
+      </div>
+      <div class="fg pop"><span class="fl">Population</span>
+        <select id="fPop">
+          <option value="">Any</option>
+          <option value="veterans">Veterans</option>
+          <option value="children">Children</option>
+          <option value="lgbtq">LGBTQ+</option>
+          <option value="seniors">Seniors</option>
+          <option value="eating disorder">Eating disorders</option>
+          <option value="post-traumatic">PTSD</option>
+          <option value="criminal justice">Justice</option>
+        </select>
+      </div>
+      <div class="fg emg"><span class="fl">Emergency</span>
+        <select id="fEmg">
+          <option value="">Not required</option>
+          <option value="crisis intervention">Crisis team</option>
+          <option value="psychiatric emergency onsite">Psychiatric EM</option>
+          <option value="walk-in">Walk-in</option>
+        </select>
+      </div>
+      <div class="filter-toolbar__submit">
+        <button type="button" class="btn-go" onclick="runSearch()">Search</button>
+      </div>
+    </div>
+    <div class="complexity-guide" id="complexityHelp" role="note" aria-label="Complexity filter guide">
+      <div class="complexity-guide__title">Complexity Guide</div>
+      <ul class="complexity-guide__list">
+        <li><span class="level-chip level-chip--high">High</span> Comprehensive or specialized hubs (clusters 0,2)</li>
+        <li><span class="level-chip level-chip--moderate">Moderate</span> Structured clinical and peer support (clusters 1,3)</li>
+        <li><span class="level-chip level-chip--low">Low</span> Essential support services (cluster 4)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Secondary: AI (optional assist — visually subordinate, like a supplemental query bar) -->
+  <section class="ai-toolbar" aria-label="Ask AI">
+    <span class="ai-toolbar__label">Ask AI</span>
+    <input class="ai-in" id="aiQ" placeholder="Optional: describe the case in plain language to re-rank results (requires server API key)." aria-label="Ask AI in natural language"/>
+    <button type="button" class="ai-submit" onclick="runAI()" id="aiBtn">Run</button>
+    <div class="ai-msg" id="aiMsg" role="status"></div>
+  </section>
+
+  <div class="main">
+    <aside class="results-col">
+      <div class="results-hdr">
+        <div class="results-hdr-left">
+          <span class="results-title">Results</span>
+          <span class="count-pill" id="countPill">—</span>
+        </div>
+        <span class="sort-note" id="sortNote"></span>
+      </div>
+      <div class="results-list" id="resList"></div>
+    </aside>
+
+    <div class="right-col">
+      <div class="map-wrap">
+        <div id="map" aria-label="Map of facilities"></div>
+        <div class="map-legend">
+          <span class="leg-item"><span class="leg-dot leg-dot--blue"></span> Result</span>
+          <span class="leg-item"><span class="leg-dot leg-dot--red"></span> Selected</span>
+        </div>
+      </div>
+      <div class="detail-pane" id="dPane">
+        <div class="detail-empty" id="dEmpty">
+          <p class="detail-empty__lead">Select a facility</p>
+          <p class="detail-empty__sub">Click a row in the list or a pin on the map to view address, phone, and services.</p>
+        </div>
+        <div id="dContent" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
