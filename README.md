@@ -5,15 +5,33 @@
 - **Project site:** `frontend/index.html` — scrollable landing (problem, solution, data sources, startup context).
 - **Search tool:** `frontend/navigator.html` — ZIP, filters, map, Ask AI (Gemini via backend).
 
-Run the **Flask server** from `backend/` so `/`, `/navigator.html`, `/data/`, and `/api/ai-rank` share one origin:
+Preferred app is now the **Next.js frontend** in `webapp/` (single server, single `/` root):
 
 ```bash
-cd backend && pip install -r requirements.txt && python app.py
+cd webapp
+npm install
+npm run dev
 ```
 
-Open **http://127.0.0.1:8080/** for the landing page, or **http://127.0.0.1:8080/navigator.html** for the facility finder directly.
+Open **http://localhost:3000/** for the landing page, and **http://localhost:3000/navigator** for the navigator.
 
-See `backend/README.md` and `frontend/README.md` for details.
+Legacy Flask app still exists in `backend/` + `frontend/`, but is optional during migration.
+
+## New Next.js frontend (in progress)
+
+A modern UI migration now lives in `webapp/` (Next.js + TypeScript + Tailwind).
+
+Run it locally:
+
+```bash
+cd webapp
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000` (new UI) and `http://localhost:3000/navigator` (new navigator).
+
+Scoring details for the new navigator are documented in `webapp/README.md` under **Scoring model (Rule Score v2)**.
 
 ---
 
